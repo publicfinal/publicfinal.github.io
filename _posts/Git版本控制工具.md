@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Git版本控制工具
-tags: 新建,模板,小书匠
+tags: git,模板,小书匠
 ---
 # Git版本控制工具
 
