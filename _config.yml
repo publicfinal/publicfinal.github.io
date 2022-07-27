@@ -105,8 +105,8 @@ theme: next
 deploy:
   type: 'git'
   repository: 
-              git@github.com:publicfinal/publicfinal.github.io.git,master
-              # git@gitee.com:publicfinal/publicfinal.git,master
+              # git@github.com:publicfinal/publicfinal.github.io.git,master
+              git@gitee.com:publicfinal/publicfinal.git,master
   # brand: master
 
 # 文章末尾添加“本文结束”标记
