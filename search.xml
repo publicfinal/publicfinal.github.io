@@ -1,6 +1,185 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Hexo个人博客搭建</title>
+    <url>/2022/07/27/%E5%89%8D%E8%A8%80%EF%BC%9A/Hexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</url>
+    <content><![CDATA[<figure class="highlight makefile"><table><tr><td class="code"><pre><span class="line"><span class="section">作者: 左岸小镇_梦归</span></span><br><span class="line"><span class="section">企鹅: 2427419219</span></span><br><span class="line"><span class="section">邮箱: publicfinal@163.com</span></span><br><span class="line"><span class="section">博客: https://publicfinal.top/</span></span><br><span class="line"><span class="section">备用: https://publicfinal.gitee.io/</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="Hexo个人博客搭建"><a href="#Hexo个人博客搭建" class="headerlink" title="Hexo个人博客搭建"></a>Hexo个人博客搭建</h1><p>官方文档：<a href="https://hexo.io/zh-cn/docs/">https://hexo.io/zh-cn/docs/</a></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install -g hexo-cli #全局安装hexo</span><br><span class="line">npm install hexo #当前包下安装</span><br><span class="line">hexo -v #查看hexo版本</span><br><span class="line">hexo init &lt;folder&gt;  #本地构建hexo网站包,folder文件夹</span><br><span class="line">cd &lt;folder&gt;  #切换到folder文件夹下</span><br><span class="line">hexo clean #清空本地的构建文件</span><br><span class="line">hexo g #构建博客网页（将md文件转换成静态html）</span><br><span class="line">hexo s #本地运行</span><br><span class="line">npm install hexo-deployer-git --save #安装 hexo-deployer-git。</span><br><span class="line">hexo d #部署到远端</span><br><span class="line">#使用以上命令就可以完成个人博客的创建啦，想要好看就需要自己设置主题</span><br></pre></td></tr></table></figure>
+
+<p>部署完成后一定要新建一个分支，保存博客源代码文件。方便下次写完博客后重新更新博客信息</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#从远端分支拉取博客源代码后,在博客文件夹下是无法执行 hexo指令的，这个时候不要怀疑是你环境变量的问题。这是因为mode_modules 这个文件夹在上传git时候被 .gitignore这个忽略文件忽略了。</span><br><span class="line">#在文件夹下执行</span><br><span class="line">npm install </span><br><span class="line">#node.js 会自动根据package.json文件下载所需的node_modules项目文件</span><br><span class="line">#这个时候你会发现，博客文件夹下又可以执行hexo 指令了。</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><h3 id="什么是-Hexo？"><a href="#什么是-Hexo？" class="headerlink" title="什么是 Hexo？"></a>什么是 Hexo？</h3><p>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 <a href="http://daringfireball.net/projects/markdown/">Markdown</a>（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。</p>
+<h4 id="安装前提"><a href="#安装前提" class="headerlink" title="安装前提"></a>安装前提</h4><p>安装 Hexo 相当简单，只需要先安装下列应用程序即可：</p>
+<ul>
+<li><a href="http://nodejs.org/">Node.js</a> (Node.js 版本需不低于 10.13，建议使用 Node.js 12.0 及以上版本)</li>
+<li><a href="http://git-scm.com/">Git</a></li>
+</ul>
+<p>如果您的电脑中已经安装上述必备程序，那么恭喜您！你可以直接前往 <a href="https://hexo.io/zh-cn/docs/#%E5%AE%89%E8%A3%85-Hexo">安装 Hexo</a> 步骤。</p>
+<p>如果您的电脑中尚未安装所需要的程序，请根据以下安装指示完成安装。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">查看node.js和git是否安装成功</span><br><span class="line">node -v  #检查node版本 </span><br><span class="line">git -v   #检查git版本</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="安装-Hexo"><a href="#安装-Hexo" class="headerlink" title="安装 Hexo"></a>安装 Hexo</h4><p>所有必备的应用程序安装完成后，即可使用 npm 安装 Hexo。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+
+<p>&#x3D;&#x3D;-g 全局安装&#x3D;&#x3D; </p>
+<h4 id="进阶安装和使用"><a href="#进阶安装和使用" class="headerlink" title="进阶安装和使用"></a>进阶安装和使用</h4><p>对于熟悉 npm 的进阶用户，可以仅局部安装 <code>hexo</code> 包。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ npm install hexo</span><br></pre></td></tr></table></figure>
+
+<p>安装以后，可以使用以下两种方式执行 Hexo：</p>
+<ol>
+<li><code>npx hexo &lt;command&gt;</code></li>
+<li>将 Hexo 所在的目录下的 <code>node_modules</code> 添加到环境变量之中即可直接使用 <code>hexo &lt;command&gt;</code>：</li>
+</ol>
+<h2 id="建站"><a href="#建站" class="headerlink" title="建站"></a>建站</h2><p>安装 Hexo 完成后，请执行下列命令，Hexo 将会在指定文件夹中新建所需要的文件。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ hexo init &lt;folder&gt;</span><br><span class="line">$ cd &lt;folder&gt;</span><br><span class="line">$ npm install</span><br></pre></td></tr></table></figure>
+
+<p>新建完成后，指定文件夹的目录如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">.</span><br><span class="line">├── _config.yml  #全局的配置文件信息</span><br><span class="line">├── package.json #应用程序的信息,node.js需要使用</span><br><span class="line">├── scaffolds #模板文件夹</span><br><span class="line">├── source  #资源文件夹，用于存放用户资源</span><br><span class="line">|   ├── _drafts</span><br><span class="line">|   └── _posts #除此文件夹外其他的开头命名为 _ (下划线)的文件 / 文件夹和隐藏的文件将会被忽略Markdown 和 HTML 文件会被解析并放到 public 文件夹，而其他文件会被拷贝过去。</span><br><span class="line">└── themes  #主题 文件夹。Hexo 会根据主题来生成静态页面。</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>您可以在 <code>_config.yml</code> 中修改大部分的配置。</p>
+<h3 id="网站"><a href="#网站" class="headerlink" title="网站"></a>网站</h3><table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>title</code></td>
+<td align="left">网站标题</td>
+</tr>
+<tr>
+<td align="left"><code>subtitle</code></td>
+<td align="left">网站副标题</td>
+</tr>
+<tr>
+<td align="left"><code>description</code></td>
+<td align="left">网站描述</td>
+</tr>
+<tr>
+<td align="left"><code>keywords</code></td>
+<td align="left">网站的关键词。支持多个关键词。</td>
+</tr>
+<tr>
+<td align="left"><code>author</code></td>
+<td align="left">您的名字</td>
+</tr>
+<tr>
+<td align="left"><code>language</code></td>
+<td align="left">网站使用的语言。对于简体中文用户来说，使用不同的主题可能需要设置成不同的值，请参考你的主题的文档自行设置，常见的有 <code>zh-Hans</code>和 <code>zh-CN</code>。</td>
+</tr>
+<tr>
+<td align="left"><code>timezone</code></td>
+<td align="left">网站时区。Hexo 默认使用您电脑的时区。请参考 <a href="https://en.wikipedia.org/wiki/List_of_tz_database_time_zones">时区列表</a> 进行设置，如 <code>America/New_York</code>, <code>Japan</code>, 和 <code>UTC</code> 。一般的，对于中国大陆地区可以使用 <code>Asia/Shanghai</code>。</td>
+</tr>
+</tbody></table>
+<p>其中，<code>description</code>主要用于SEO，告诉搜索引擎一个关于您站点的简单描述，通常建议在其中包含您网站的关键词。<code>author</code>参数用于主题显示文章的作者。</p>
+<h3 id="网址"><a href="#网址" class="headerlink" title="网址"></a>网址</h3><table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="left">描述</th>
+<th align="left">默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>url</code></td>
+<td align="left">网址, 必须以 <code>http://</code> 或 <code>https://</code> 开头</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><code>root</code></td>
+<td align="left">网站根目录</td>
+<td align="left"><code>url&#39;s pathname</code></td>
+</tr>
+<tr>
+<td align="left"><code>permalink</code></td>
+<td align="left">文章的 <a href="https://hexo.io/zh-cn/docs/permalinks">永久链接</a> 格式</td>
+<td align="left"><code>:year/:month/:day/:title/</code></td>
+</tr>
+<tr>
+<td align="left"><code>permalink_defaults</code></td>
+<td align="left">永久链接中各部分的默认值</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><code>pretty_urls</code></td>
+<td align="left">改写 <a href="https://hexo.io/zh-cn/docs/variables"><code>permalink</code></a> 的值来美化 URL</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><code>pretty_urls.trailing_index</code></td>
+<td align="left">是否在永久链接中保留尾部的 <code>index.html</code>，设置为 <code>false</code> 时去除</td>
+<td align="left"><code>true</code></td>
+</tr>
+<tr>
+<td align="left"><code>pretty_urls.trailing_html</code></td>
+<td align="left">是否在永久链接中保留尾部的 <code>.html</code>, 设置为 <code>false</code> 时去除 (<em>对尾部的 <code>index.html</code>无效</em>)</td>
+<td align="left"><code>true</code></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>网站存放在子目录</p>
+<p>如果您的网站存放在子目录中，例如 <code>http://example.com/blog</code>，则请将您的 <code>url</code> 设为 <code>http://example.com/blog</code> 并把 <code>root</code> 设为 <code>/blog/</code>。</p>
+</blockquote>
+<p>例如：</p>
+<figure class="highlight dts"><table><tr><td class="code"><pre><span class="line"><span class="meta"># 比如，一个页面的永久链接是 http:<span class="comment">//example.com/foo/bar/index.html</span></span></span><br><span class="line"><span class="symbol">pretty_urls:</span></span><br><span class="line"><span class="symbol">  trailing_index:</span> false</span><br><span class="line"><span class="meta"># 此时页面的永久链接会变为 http:<span class="comment">//example.com/foo/bar/</span></span></span><br></pre></td></tr></table></figure>
+
+<h2 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h2><p>github 或者gitee创建项目库</p>
+<p>Hexo 提供了快速方便的一键部署功能，让您只需一条命令就能将网站部署到服务器上。</p>
+<figure class="highlight crystal"><table><tr><td class="code"><pre><span class="line"><span class="variable">$ </span>hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>在开始之前，您必须先在 <code>_config.yml</code> 中修改参数，一个正确的部署配置中至少要有 <code>type</code> 参数，例如：</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br></pre></td></tr></table></figure>
+
+<p>您可同时使用多个 deployer，Hexo 会依照顺序执行每个 deployer。</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">type:</span> <span class="string">heroku</span></span><br><span class="line">  <span class="attr">repo:</span></span><br></pre></td></tr></table></figure>
+
+<p>在blog文件夹下_config.yml中进行配置</p>
+<p><img src="/../../imgae/Hexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/5424F61.PNG"></p>
+<p>创建新的分支 例如：hexo 将项目代码保存到新的分支中。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git init  # 创建本地版本库</span><br></pre></td></tr></table></figure>
+
+<p>修改.git文件夹下config文件</p>
+<p><img src="/../../imgae/Hexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/C1215F1.PNG"></p>
+]]></content>
+      <categories>
+        <category>前言</category>
+        <category>Hexo个人博客搭建</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>next主题</tag>
+        <tag>gitee部署</tag>
+        <tag>github部署</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Markdown文档创建与使用(Typora)</title>
+    <url>/2022/07/27/%E5%89%8D%E8%A8%80%EF%BC%9A/Markdown%E6%96%87%E6%A1%A3%E5%88%9B%E5%BB%BA%E4%B8%8E%E4%BD%BF%E7%94%A8(Typora)/</url>
+    <content><![CDATA[<figure class="highlight makefile"><table><tr><td class="code"><pre><span class="line"><span class="section">作者: 左岸小镇_梦归</span></span><br><span class="line"><span class="section">企鹅: 2427419219</span></span><br><span class="line"><span class="section">邮箱: publicfinal@163.com</span></span><br><span class="line"><span class="section">博客: https://publicfinal.top/</span></span><br><span class="line"><span class="section">备用: https://publicfinal.gitee.io/</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/../../imgae/Markdown%E6%96%87%E6%A1%A3%E5%88%9B%E5%BB%BA%E4%B8%8E%E4%BD%BF%E7%94%A8(Typora)/image-20220730130917194.png" alt="image-20220730130917194"></p>
+]]></content>
+      <categories>
+        <category>前言</category>
+        <category>Markdown文档创建与使用(Typora)</category>
+      </categories>
+      <tags>
+        <tag>Markdown</tag>
+        <tag>Typora</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>01-计算机和计算机语言</title>
     <url>/2022/07/27/%E9%98%B6%E6%AE%B5%E4%B8%80%EF%BC%9AJavaSE/01-%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%92%8C%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%AF%AD%E8%A8%80/</url>
     <content><![CDATA[<figure class="highlight makefile"><table><tr><td class="code"><pre><span class="line"><span class="section">作者: 左岸小镇_梦归</span></span><br><span class="line"><span class="section">企鹅: 2427419219</span></span><br><span class="line"><span class="section">邮箱: publicfinal@163.com</span></span><br><span class="line"><span class="section">博客: https://publicfinal.top/</span></span><br><span class="line"><span class="section">备用: https://publicfinal.gitee.io/</span></span><br></pre></td></tr></table></figure>
@@ -481,99 +660,6 @@
       </categories>
       <tags>
         <tag>流程控制</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>05-方法</title>
-    <url>/2022/07/27/%E9%98%B6%E6%AE%B5%E4%B8%80%EF%BC%9AJavaSE/05_%E6%96%B9%E6%B3%95/</url>
-    <content><![CDATA[<figure class="highlight makefile"><table><tr><td class="code"><pre><span class="line"><span class="section">作者: 左岸小镇_梦归</span></span><br><span class="line"><span class="section">企鹅: 2427419219</span></span><br><span class="line"><span class="section">邮箱: publicfinal@163.com</span></span><br><span class="line"><span class="section">博客: https://publicfinal.top/</span></span><br><span class="line"><span class="section">备用: https://publicfinal.gitee.io/</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="第一章-方法概念"><a href="#第一章-方法概念" class="headerlink" title="第一章 方法概念"></a>第一章 方法概念</h2><span id="more"></span>
-
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">实现特定功能的一段代码,可反复被调用</span><br></pre></td></tr></table></figure>
-
-<table>
-    <tbody>
-        <tr>
-            <td style="font-size:12px;width:50%;">
-                计算机 — 模拟现实 — 通过软件控制硬件<br/>比如豆浆机 — 里面的微控制器 — 控制豆浆机<br/>右图面板上有很多种模式<br/>每一种模式对应不同的搅拌次数、搅拌时间、烧水温度等…<br/>这些硬件的动作都需要软件的控制<br/>硬件的每一种模式至少对应这软件里面的一个方法<br/>总结: 方法其实就是实现特定功能的代码的集合
-            </td>
-            <td style="width:50%;">
-                <img src="https://note.youdao.com/yws/api/personal/file/WEBb24ff3680bb53f5a769d7d00122c62f8?method=download&shareKey=2fc31da17367fbad0ff23bfe1ef86478">
-            </td>
-        </tr>
-    </tbody>
-</table>
-
-
-
-<h2 id="第二章-方法的定义"><a href="#第二章-方法的定义" class="headerlink" title="第二章 方法的定义"></a>第二章 方法的定义</h2><ul>
-<li>语法格式</li>
-</ul>
-<figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="selector-attr">[权限修饰符]</span><span class="selector-attr">[其它修饰符]</span> 返回值类型 方法名称([参数列表])&#123;</span><br><span class="line">	<span class="comment">//方法体</span></span><br><span class="line">	return;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<table>
-    <tbody>
-        <tr>
-            <td style="font-size: 12px;">
-                中括号处的设置可以省略,返回值类型可以是基本数据类型也可以是引用数据类型,如果方法不存在返回值那么为void,方法名称自定义,但是需要遵循标识符的命名规范,不能省略.参数列表可以有多个,也可以为0个,无限制.return关键字给方法提供返回值,如果方法没有返回值return可以省略也可以不省略,如果方法有返回值,那么return一定不能省略,并且要返回方法返回值类型相同的值.
-            </td>
-        </tr>
-    </tbody>
-</table>
-
-
-
-<ul>
-<li>定义位置</li>
-</ul>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">方法定义在类的内部,与<span class="selector-tag">main</span>方法并列,方法不能定义在另一个方法中.</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>方法定义举例</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//无返回值,无参数</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sum</span><span class="params">()</span>&#123;</span><br><span class="line">	<span class="comment">//方法体</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//有返回值,无参数</span></span><br><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">sum</span><span class="params">()</span>&#123;</span><br><span class="line">	<span class="comment">//方法体</span></span><br><span class="line">	<span class="keyword">return</span> 返回整型数据;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//有返回值,有参数</span></span><br><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">sum</span><span class="params">(<span class="type">int</span> x,<span class="type">int</span> y)</span>&#123;</span><br><span class="line">	<span class="comment">//方法体</span></span><br><span class="line">	<span class="keyword">return</span> x+y;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//无返回值,有参数</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sum</span><span class="params">(<span class="type">int</span> x,<span class="type">int</span> y)</span>&#123;</span><br><span class="line">	<span class="comment">//方法体</span></span><br><span class="line">	<span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//带其它修饰符static</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">sum</span><span class="params">(<span class="type">int</span> x,<span class="type">int</span> y)</span>&#123;</span><br><span class="line">	<span class="comment">//方法体</span></span><br><span class="line">	<span class="keyword">return</span> x+y;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>方法的参数列表</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//当方法传入的参数个数不确定时可以采用参数列表的方式,参数列表的格式: 数据类型...参数名</span></span><br><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">sum</span><span class="params">(<span class="type">int</span>...args)</span>&#123;</span><br><span class="line">  <span class="type">int</span> s=<span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; args.length; i++) &#123;</span><br><span class="line">    s+=args[i];</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> s;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>重载方法</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">在同一个类中,方法名相同参数列表不同的方法我们称之为重载方法.</span><br><span class="line"></span><br><span class="line">eg:</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">User</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">add</span><span class="params">()</span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">add</span><span class="params">(<span class="type">int</span> x)</span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">add</span><span class="params">(String s)</span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>知识扩展</li>
-</ul>
-<figure class="highlight actionscript"><table><tr><td class="code"><pre><span class="line">带<span class="keyword">static</span>修饰的方法被称为静态方法</span><br><span class="line">非<span class="keyword">static</span>修饰的方法被称为实例方法</span><br><span class="line"></span><br><span class="line">具体这两种方法有什么不同,后面会做详细介绍</span><br></pre></td></tr></table></figure>
-
-<h2 id="第三章-方法的调用"><a href="#第三章-方法的调用" class="headerlink" title="第三章 方法的调用"></a>第三章 方法的调用</h2><img src="https://note.youdao.com/yws/api/personal/file/WEB6b73f2b91946530eaf224143d29bc203?method=download&shareKey=c64de07ad6c7e1806538bb840faeb89c">
-
-<h2 id="第四章-递归"><a href="#第四章-递归" class="headerlink" title="第四章 递归"></a>第四章 递归</h2><figure class="highlight"><table><tr><td class="code"><pre><span class="line">在解决现实问题时,有的时候需要用到一个方法调用自身的方法,也就是自己调用自己,我们把这种调用方式叫做递归调用</span><br></pre></td></tr></table></figure>
-
-<table>
-    <tbody>
-        <tr>
-            <td>
-                <img src="https://note.youdao.com/yws/api/personal/file/WEB032d85267478c6a8363a2d41187ddbe2?method=download&shareKey=b7f23c9143e675f22b7aed3be0fd71a3">
-            </td>
-            <td>
-                <img src="https://note.youdao.com/yws/api/personal/file/WEB7445eb4c90931367b493060c0c535297?method=download&shareKey=5137fcea1433cd55960e33fa1fe53d8b">
-            </td>
-        </tr>
-    </tbody>
-</table>
-]]></content>
-      <categories>
-        <category>Java后端</category>
-        <category>阶段一：JavaSE</category>
-        <category>05-方法</category>
-      </categories>
-      <tags>
-        <tag>方法</tag>
-        <tag>函数</tag>
       </tags>
   </entry>
   <entry>
@@ -1118,6 +1204,114 @@
       </categories>
       <tags>
         <tag>java基础语法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>05-方法</title>
+    <url>/2022/07/27/%E9%98%B6%E6%AE%B5%E4%B8%80%EF%BC%9AJavaSE/05_%E6%96%B9%E6%B3%95/</url>
+    <content><![CDATA[<figure class="highlight makefile"><table><tr><td class="code"><pre><span class="line"><span class="section">作者: 左岸小镇_梦归</span></span><br><span class="line"><span class="section">企鹅: 2427419219</span></span><br><span class="line"><span class="section">邮箱: publicfinal@163.com</span></span><br><span class="line"><span class="section">博客: https://publicfinal.top/</span></span><br><span class="line"><span class="section">备用: https://publicfinal.gitee.io/</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="第一章-方法概念"><a href="#第一章-方法概念" class="headerlink" title="第一章 方法概念"></a>第一章 方法概念</h2><span id="more"></span>
+
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">实现特定功能的一段代码,可反复被调用</span><br></pre></td></tr></table></figure>
+
+<table>
+    <tbody>
+        <tr>
+            <td style="font-size:12px;width:50%;">
+                计算机 — 模拟现实 — 通过软件控制硬件<br/>比如豆浆机 — 里面的微控制器 — 控制豆浆机<br/>右图面板上有很多种模式<br/>每一种模式对应不同的搅拌次数、搅拌时间、烧水温度等…<br/>这些硬件的动作都需要软件的控制<br/>硬件的每一种模式至少对应这软件里面的一个方法<br/>总结: 方法其实就是实现特定功能的代码的集合
+            </td>
+            <td style="width:50%;">
+                <img src="https://note.youdao.com/yws/api/personal/file/WEBb24ff3680bb53f5a769d7d00122c62f8?method=download&shareKey=2fc31da17367fbad0ff23bfe1ef86478">
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+<h2 id="第二章-方法的定义"><a href="#第二章-方法的定义" class="headerlink" title="第二章 方法的定义"></a>第二章 方法的定义</h2><ul>
+<li>语法格式</li>
+</ul>
+<figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="selector-attr">[权限修饰符]</span><span class="selector-attr">[其它修饰符]</span> 返回值类型 方法名称([参数列表])&#123;</span><br><span class="line">	<span class="comment">//方法体</span></span><br><span class="line">	return;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<table>
+    <tbody>
+        <tr>
+            <td style="font-size: 12px;">
+                中括号处的设置可以省略,返回值类型可以是基本数据类型也可以是引用数据类型,如果方法不存在返回值那么为void,方法名称自定义,但是需要遵循标识符的命名规范,不能省略.参数列表可以有多个,也可以为0个,无限制.return关键字给方法提供返回值,如果方法没有返回值return可以省略也可以不省略,如果方法有返回值,那么return一定不能省略,并且要返回方法返回值类型相同的值.
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+<ul>
+<li>定义位置</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">方法定义在类的内部,与<span class="selector-tag">main</span>方法并列,方法不能定义在另一个方法中.</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>方法定义举例</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//无返回值,无参数</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sum</span><span class="params">()</span>&#123;</span><br><span class="line">	<span class="comment">//方法体</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//有返回值,无参数</span></span><br><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">sum</span><span class="params">()</span>&#123;</span><br><span class="line">	<span class="comment">//方法体</span></span><br><span class="line">	<span class="keyword">return</span> 返回整型数据;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//有返回值,有参数</span></span><br><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">sum</span><span class="params">(<span class="type">int</span> x,<span class="type">int</span> y)</span>&#123;</span><br><span class="line">	<span class="comment">//方法体</span></span><br><span class="line">	<span class="keyword">return</span> x+y;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//无返回值,有参数</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sum</span><span class="params">(<span class="type">int</span> x,<span class="type">int</span> y)</span>&#123;</span><br><span class="line">	<span class="comment">//方法体</span></span><br><span class="line">	<span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//带其它修饰符static</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">sum</span><span class="params">(<span class="type">int</span> x,<span class="type">int</span> y)</span>&#123;</span><br><span class="line">	<span class="comment">//方法体</span></span><br><span class="line">	<span class="keyword">return</span> x+y;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>方法的参数列表</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//当方法传入的参数个数不确定时可以采用参数列表的方式,参数列表的格式: 数据类型...参数名</span></span><br><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">sum</span><span class="params">(<span class="type">int</span>...args)</span>&#123;</span><br><span class="line">  <span class="type">int</span> s=<span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; args.length; i++) &#123;</span><br><span class="line">    s+=args[i];</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> s;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>重载方法</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">在同一个类中,方法名相同参数列表不同的方法我们称之为重载方法.</span><br><span class="line"></span><br><span class="line">eg:</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">User</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">add</span><span class="params">()</span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">add</span><span class="params">(<span class="type">int</span> x)</span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">add</span><span class="params">(String s)</span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>知识扩展</li>
+</ul>
+<figure class="highlight actionscript"><table><tr><td class="code"><pre><span class="line">带<span class="keyword">static</span>修饰的方法被称为静态方法</span><br><span class="line">非<span class="keyword">static</span>修饰的方法被称为实例方法</span><br><span class="line"></span><br><span class="line">具体这两种方法有什么不同,后面会做详细介绍</span><br></pre></td></tr></table></figure>
+
+<h2 id="第三章-方法的调用"><a href="#第三章-方法的调用" class="headerlink" title="第三章 方法的调用"></a>第三章 方法的调用</h2><img src="https://note.youdao.com/yws/api/personal/file/WEB6b73f2b91946530eaf224143d29bc203?method=download&shareKey=c64de07ad6c7e1806538bb840faeb89c">
+
+<h2 id="第四章-递归"><a href="#第四章-递归" class="headerlink" title="第四章 递归"></a>第四章 递归</h2><figure class="highlight"><table><tr><td class="code"><pre><span class="line">在解决现实问题时,有的时候需要用到一个方法调用自身的方法,也就是自己调用自己,我们把这种调用方式叫做递归调用</span><br></pre></td></tr></table></figure>
+
+<table>
+    <tbody>
+        <tr>
+            <td>
+                <img src="https://note.youdao.com/yws/api/personal/file/WEB032d85267478c6a8363a2d41187ddbe2?method=download&shareKey=b7f23c9143e675f22b7aed3be0fd71a3">
+            </td>
+            <td>
+                <img src="https://note.youdao.com/yws/api/personal/file/WEB7445eb4c90931367b493060c0c535297?method=download&shareKey=5137fcea1433cd55960e33fa1fe53d8b">
+            </td>
+        </tr>
+    </tbody>
+</table>
+]]></content>
+      <categories>
+        <category>Java后端</category>
+        <category>阶段一：JavaSE</category>
+        <category>05-方法</category>
+      </categories>
+      <tags>
+        <tag>方法</tag>
+        <tag>函数</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>08_权限,异常和常用类</title>
+    <url>/2022/07/27/%E9%98%B6%E6%AE%B5%E4%B8%80%EF%BC%9AJavaSE/08_%E6%9D%83%E9%99%90,%E5%BC%82%E5%B8%B8%E5%92%8C%E5%B8%B8%E7%94%A8%E7%B1%BB/</url>
+    <content><![CDATA[<figure class="highlight makefile"><table><tr><td class="code"><pre><span class="line"><span class="section">作者: 左岸小镇_梦归</span></span><br><span class="line"><span class="section">企鹅: 2427419219</span></span><br><span class="line"><span class="section">邮箱: publicfinal@163.com</span></span><br><span class="line"><span class="section">博客: https://publicfinal.top/</span></span><br><span class="line"><span class="section">备用: https://publicfinal.gitee.io/</span></span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Java后端</category>
+        <category>阶段一：JavaSE</category>
+        <category>08_权限,异常和常用类</category>
+      </categories>
+      <tags>
+        <tag>权限</tag>
+        <tag>异常</tag>
+        <tag>常用类</tag>
       </tags>
   </entry>
   <entry>
@@ -1669,21 +1863,6 @@
       </tags>
   </entry>
   <entry>
-    <title>08_权限,异常和常用类</title>
-    <url>/2022/07/27/%E9%98%B6%E6%AE%B5%E4%B8%80%EF%BC%9AJavaSE/08_%E6%9D%83%E9%99%90,%E5%BC%82%E5%B8%B8%E5%92%8C%E5%B8%B8%E7%94%A8%E7%B1%BB/</url>
-    <content><![CDATA[<figure class="highlight makefile"><table><tr><td class="code"><pre><span class="line"><span class="section">作者: 左岸小镇_梦归</span></span><br><span class="line"><span class="section">企鹅: 2427419219</span></span><br><span class="line"><span class="section">邮箱: publicfinal@163.com</span></span><br><span class="line"><span class="section">博客: https://publicfinal.top/</span></span><br><span class="line"><span class="section">备用: https://publicfinal.gitee.io/</span></span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Java后端</category>
-        <category>阶段一：JavaSE</category>
-        <category>08_权限,异常和常用类</category>
-      </categories>
-      <tags>
-        <tag>权限</tag>
-        <tag>异常</tag>
-        <tag>常用类</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>09_集合和File类</title>
     <url>/2022/07/27/%E9%98%B6%E6%AE%B5%E4%B8%80%EF%BC%9AJavaSE/09_%E9%9B%86%E5%90%88%E5%92%8CFile%E7%B1%BB/</url>
     <content><![CDATA[<figure class="highlight makefile"><table><tr><td class="code"><pre><span class="line"><span class="section">作者: 左岸小镇_梦归</span></span><br><span class="line"><span class="section">企鹅: 2427419219</span></span><br><span class="line"><span class="section">邮箱: publicfinal@163.com</span></span><br><span class="line"><span class="section">博客: https://publicfinal.top/</span></span><br><span class="line"><span class="section">备用: https://publicfinal.gitee.io/</span></span><br></pre></td></tr></table></figure>]]></content>
@@ -1695,20 +1874,6 @@
       <tags>
         <tag>集合</tag>
         <tag>File类</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>10_字节流,字符流和其他流</title>
-    <url>/2022/07/27/%E9%98%B6%E6%AE%B5%E4%B8%80%EF%BC%9AJavaSE/10_%E5%AD%97%E8%8A%82%E6%B5%81,%E5%AD%97%E7%AC%A6%E6%B5%81%E5%92%8C%E5%85%B6%E4%BB%96%E6%B5%81/</url>
-    <content><![CDATA[<figure class="highlight makefile"><table><tr><td class="code"><pre><span class="line"><span class="section">作者: 左岸小镇_梦归</span></span><br><span class="line"><span class="section">企鹅: 2427419219</span></span><br><span class="line"><span class="section">邮箱: publicfinal@163.com</span></span><br><span class="line"><span class="section">博客: https://publicfinal.top/</span></span><br><span class="line"><span class="section">备用: https://publicfinal.gitee.io/</span></span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Java后端</category>
-        <category>阶段一：JavaSE</category>
-        <category>10_字节流,字符流和其他流</category>
-      </categories>
-      <tags>
-        <tag>流</tag>
-        <tag>字节流</tag>
       </tags>
   </entry>
   <entry>
@@ -1998,6 +2163,20 @@
         <tag>UDP</tag>
         <tag>Socket</tag>
         <tag>URL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>10_字节流,字符流和其他流</title>
+    <url>/2022/07/27/%E9%98%B6%E6%AE%B5%E4%B8%80%EF%BC%9AJavaSE/10_%E5%AD%97%E8%8A%82%E6%B5%81,%E5%AD%97%E7%AC%A6%E6%B5%81%E5%92%8C%E5%85%B6%E4%BB%96%E6%B5%81/</url>
+    <content><![CDATA[<figure class="highlight makefile"><table><tr><td class="code"><pre><span class="line"><span class="section">作者: 左岸小镇_梦归</span></span><br><span class="line"><span class="section">企鹅: 2427419219</span></span><br><span class="line"><span class="section">邮箱: publicfinal@163.com</span></span><br><span class="line"><span class="section">博客: https://publicfinal.top/</span></span><br><span class="line"><span class="section">备用: https://publicfinal.gitee.io/</span></span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Java后端</category>
+        <category>阶段一：JavaSE</category>
+        <category>10_字节流,字符流和其他流</category>
+      </categories>
+      <tags>
+        <tag>流</tag>
+        <tag>字节流</tag>
       </tags>
   </entry>
   <entry>
@@ -2447,185 +2626,6 @@
       </categories>
       <tags>
         <tag>反射</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hexo个人博客搭建</title>
-    <url>/2022/07/27/%E5%89%8D%E8%A8%80%EF%BC%9A/Hexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</url>
-    <content><![CDATA[<figure class="highlight makefile"><table><tr><td class="code"><pre><span class="line"><span class="section">作者: 左岸小镇_梦归</span></span><br><span class="line"><span class="section">企鹅: 2427419219</span></span><br><span class="line"><span class="section">邮箱: publicfinal@163.com</span></span><br><span class="line"><span class="section">博客: https://publicfinal.top/</span></span><br><span class="line"><span class="section">备用: https://publicfinal.gitee.io/</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="Hexo个人博客搭建"><a href="#Hexo个人博客搭建" class="headerlink" title="Hexo个人博客搭建"></a>Hexo个人博客搭建</h1><p>官方文档：<a href="https://hexo.io/zh-cn/docs/">https://hexo.io/zh-cn/docs/</a></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install -g hexo-cli #全局安装hexo</span><br><span class="line">npm install hexo #当前包下安装</span><br><span class="line">hexo -v #查看hexo版本</span><br><span class="line">hexo init &lt;folder&gt;  #本地构建hexo网站包,folder文件夹</span><br><span class="line">cd &lt;folder&gt;  #切换到folder文件夹下</span><br><span class="line">hexo clean #清空本地的构建文件</span><br><span class="line">hexo g #构建博客网页（将md文件转换成静态html）</span><br><span class="line">hexo s #本地运行</span><br><span class="line">npm install hexo-deployer-git --save #安装 hexo-deployer-git。</span><br><span class="line">hexo d #部署到远端</span><br><span class="line">#使用以上命令就可以完成个人博客的创建啦，想要好看就需要自己设置主题</span><br></pre></td></tr></table></figure>
-
-<p>部署完成后一定要新建一个分支，保存博客源代码文件。方便下次写完博客后重新更新博客信息</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#从远端分支拉取博客源代码后,在博客文件夹下是无法执行 hexo指令的，这个时候不要怀疑是你环境变量的问题。这是因为mode_modules 这个文件夹在上传git时候被 .gitignore这个忽略文件忽略了。</span><br><span class="line">#在文件夹下执行</span><br><span class="line">npm install </span><br><span class="line">#node.js 会自动根据package.json文件下载所需的node_modules项目文件</span><br><span class="line">#这个时候你会发现，博客文件夹下又可以执行hexo 指令了。</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><h3 id="什么是-Hexo？"><a href="#什么是-Hexo？" class="headerlink" title="什么是 Hexo？"></a>什么是 Hexo？</h3><p>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 <a href="http://daringfireball.net/projects/markdown/">Markdown</a>（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。</p>
-<h4 id="安装前提"><a href="#安装前提" class="headerlink" title="安装前提"></a>安装前提</h4><p>安装 Hexo 相当简单，只需要先安装下列应用程序即可：</p>
-<ul>
-<li><a href="http://nodejs.org/">Node.js</a> (Node.js 版本需不低于 10.13，建议使用 Node.js 12.0 及以上版本)</li>
-<li><a href="http://git-scm.com/">Git</a></li>
-</ul>
-<p>如果您的电脑中已经安装上述必备程序，那么恭喜您！你可以直接前往 <a href="https://hexo.io/zh-cn/docs/#%E5%AE%89%E8%A3%85-Hexo">安装 Hexo</a> 步骤。</p>
-<p>如果您的电脑中尚未安装所需要的程序，请根据以下安装指示完成安装。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">查看node.js和git是否安装成功</span><br><span class="line">node -v  #检查node版本 </span><br><span class="line">git -v   #检查git版本</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="安装-Hexo"><a href="#安装-Hexo" class="headerlink" title="安装 Hexo"></a>安装 Hexo</h4><p>所有必备的应用程序安装完成后，即可使用 npm 安装 Hexo。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
-
-<p>&#x3D;&#x3D;-g 全局安装&#x3D;&#x3D; </p>
-<h4 id="进阶安装和使用"><a href="#进阶安装和使用" class="headerlink" title="进阶安装和使用"></a>进阶安装和使用</h4><p>对于熟悉 npm 的进阶用户，可以仅局部安装 <code>hexo</code> 包。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ npm install hexo</span><br></pre></td></tr></table></figure>
-
-<p>安装以后，可以使用以下两种方式执行 Hexo：</p>
-<ol>
-<li><code>npx hexo &lt;command&gt;</code></li>
-<li>将 Hexo 所在的目录下的 <code>node_modules</code> 添加到环境变量之中即可直接使用 <code>hexo &lt;command&gt;</code>：</li>
-</ol>
-<h2 id="建站"><a href="#建站" class="headerlink" title="建站"></a>建站</h2><p>安装 Hexo 完成后，请执行下列命令，Hexo 将会在指定文件夹中新建所需要的文件。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ hexo init &lt;folder&gt;</span><br><span class="line">$ cd &lt;folder&gt;</span><br><span class="line">$ npm install</span><br></pre></td></tr></table></figure>
-
-<p>新建完成后，指定文件夹的目录如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">.</span><br><span class="line">├── _config.yml  #全局的配置文件信息</span><br><span class="line">├── package.json #应用程序的信息,node.js需要使用</span><br><span class="line">├── scaffolds #模板文件夹</span><br><span class="line">├── source  #资源文件夹，用于存放用户资源</span><br><span class="line">|   ├── _drafts</span><br><span class="line">|   └── _posts #除此文件夹外其他的开头命名为 _ (下划线)的文件 / 文件夹和隐藏的文件将会被忽略Markdown 和 HTML 文件会被解析并放到 public 文件夹，而其他文件会被拷贝过去。</span><br><span class="line">└── themes  #主题 文件夹。Hexo 会根据主题来生成静态页面。</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>您可以在 <code>_config.yml</code> 中修改大部分的配置。</p>
-<h3 id="网站"><a href="#网站" class="headerlink" title="网站"></a>网站</h3><table>
-<thead>
-<tr>
-<th align="left">参数</th>
-<th align="left">描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left"><code>title</code></td>
-<td align="left">网站标题</td>
-</tr>
-<tr>
-<td align="left"><code>subtitle</code></td>
-<td align="left">网站副标题</td>
-</tr>
-<tr>
-<td align="left"><code>description</code></td>
-<td align="left">网站描述</td>
-</tr>
-<tr>
-<td align="left"><code>keywords</code></td>
-<td align="left">网站的关键词。支持多个关键词。</td>
-</tr>
-<tr>
-<td align="left"><code>author</code></td>
-<td align="left">您的名字</td>
-</tr>
-<tr>
-<td align="left"><code>language</code></td>
-<td align="left">网站使用的语言。对于简体中文用户来说，使用不同的主题可能需要设置成不同的值，请参考你的主题的文档自行设置，常见的有 <code>zh-Hans</code>和 <code>zh-CN</code>。</td>
-</tr>
-<tr>
-<td align="left"><code>timezone</code></td>
-<td align="left">网站时区。Hexo 默认使用您电脑的时区。请参考 <a href="https://en.wikipedia.org/wiki/List_of_tz_database_time_zones">时区列表</a> 进行设置，如 <code>America/New_York</code>, <code>Japan</code>, 和 <code>UTC</code> 。一般的，对于中国大陆地区可以使用 <code>Asia/Shanghai</code>。</td>
-</tr>
-</tbody></table>
-<p>其中，<code>description</code>主要用于SEO，告诉搜索引擎一个关于您站点的简单描述，通常建议在其中包含您网站的关键词。<code>author</code>参数用于主题显示文章的作者。</p>
-<h3 id="网址"><a href="#网址" class="headerlink" title="网址"></a>网址</h3><table>
-<thead>
-<tr>
-<th align="left">参数</th>
-<th align="left">描述</th>
-<th align="left">默认值</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left"><code>url</code></td>
-<td align="left">网址, 必须以 <code>http://</code> 或 <code>https://</code> 开头</td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left"><code>root</code></td>
-<td align="left">网站根目录</td>
-<td align="left"><code>url&#39;s pathname</code></td>
-</tr>
-<tr>
-<td align="left"><code>permalink</code></td>
-<td align="left">文章的 <a href="https://hexo.io/zh-cn/docs/permalinks">永久链接</a> 格式</td>
-<td align="left"><code>:year/:month/:day/:title/</code></td>
-</tr>
-<tr>
-<td align="left"><code>permalink_defaults</code></td>
-<td align="left">永久链接中各部分的默认值</td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left"><code>pretty_urls</code></td>
-<td align="left">改写 <a href="https://hexo.io/zh-cn/docs/variables"><code>permalink</code></a> 的值来美化 URL</td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left"><code>pretty_urls.trailing_index</code></td>
-<td align="left">是否在永久链接中保留尾部的 <code>index.html</code>，设置为 <code>false</code> 时去除</td>
-<td align="left"><code>true</code></td>
-</tr>
-<tr>
-<td align="left"><code>pretty_urls.trailing_html</code></td>
-<td align="left">是否在永久链接中保留尾部的 <code>.html</code>, 设置为 <code>false</code> 时去除 (<em>对尾部的 <code>index.html</code>无效</em>)</td>
-<td align="left"><code>true</code></td>
-</tr>
-</tbody></table>
-<blockquote>
-<p>网站存放在子目录</p>
-<p>如果您的网站存放在子目录中，例如 <code>http://example.com/blog</code>，则请将您的 <code>url</code> 设为 <code>http://example.com/blog</code> 并把 <code>root</code> 设为 <code>/blog/</code>。</p>
-</blockquote>
-<p>例如：</p>
-<figure class="highlight dts"><table><tr><td class="code"><pre><span class="line"><span class="meta"># 比如，一个页面的永久链接是 http:<span class="comment">//example.com/foo/bar/index.html</span></span></span><br><span class="line"><span class="symbol">pretty_urls:</span></span><br><span class="line"><span class="symbol">  trailing_index:</span> false</span><br><span class="line"><span class="meta"># 此时页面的永久链接会变为 http:<span class="comment">//example.com/foo/bar/</span></span></span><br></pre></td></tr></table></figure>
-
-<h2 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h2><p>github 或者gitee创建项目库</p>
-<p>Hexo 提供了快速方便的一键部署功能，让您只需一条命令就能将网站部署到服务器上。</p>
-<figure class="highlight crystal"><table><tr><td class="code"><pre><span class="line"><span class="variable">$ </span>hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>在开始之前，您必须先在 <code>_config.yml</code> 中修改参数，一个正确的部署配置中至少要有 <code>type</code> 参数，例如：</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br></pre></td></tr></table></figure>
-
-<p>您可同时使用多个 deployer，Hexo 会依照顺序执行每个 deployer。</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">type:</span> <span class="string">heroku</span></span><br><span class="line">  <span class="attr">repo:</span></span><br></pre></td></tr></table></figure>
-
-<p>在blog文件夹下_config.yml中进行配置</p>
-<p><img src="/../../imgae/Hexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/5424F61.PNG"></p>
-<p>创建新的分支 例如：hexo 将项目代码保存到新的分支中。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git init  # 创建本地版本库</span><br></pre></td></tr></table></figure>
-
-<p>修改.git文件夹下config文件</p>
-<p><img src="/../../imgae/Hexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/C1215F1.PNG"></p>
-]]></content>
-      <categories>
-        <category>前言</category>
-        <category>Hexo个人博客搭建</category>
-      </categories>
-      <tags>
-        <tag>Hexo</tag>
-        <tag>next主题</tag>
-        <tag>gitee部署</tag>
-        <tag>github部署</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Markdown文档创建与使用(Typora)</title>
-    <url>/2022/07/27/%E5%89%8D%E8%A8%80%EF%BC%9A/Markdown%E6%96%87%E6%A1%A3%E5%88%9B%E5%BB%BA%E4%B8%8E%E4%BD%BF%E7%94%A8(Typora)/</url>
-    <content><![CDATA[<figure class="highlight makefile"><table><tr><td class="code"><pre><span class="line"><span class="section">作者: 左岸小镇_梦归</span></span><br><span class="line"><span class="section">企鹅: 2427419219</span></span><br><span class="line"><span class="section">邮箱: publicfinal@163.com</span></span><br><span class="line"><span class="section">博客: https://publicfinal.top/</span></span><br><span class="line"><span class="section">备用: https://publicfinal.gitee.io/</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/Markdown%E6%96%87%E6%A1%A3%E5%88%9B%E5%BB%BA%E4%B8%8E%E4%BD%BF%E7%94%A8(Typora)/image-20220730125845193.png" alt="image-20220730125845193"></p>
-]]></content>
-      <categories>
-        <category>前言</category>
-        <category>Markdown文档创建与使用(Typora)</category>
-      </categories>
-      <tags>
-        <tag>Markdown</tag>
-        <tag>Typora</tag>
       </tags>
   </entry>
   <entry>
