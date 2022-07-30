@@ -15,3 +15,4 @@ tags: ["Markdown","Typora"]
 备用: https://publicfinal.gitee.io/
 ```
 
+![image-20220730130917194](../../imgae/Markdown文档创建与使用(Typora)/image-20220730130917194.png)
