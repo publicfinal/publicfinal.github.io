@@ -1,8 +1,8 @@
 ---
 title: 02-Java语言概述
 categories: 
-	- Java后端
-	- 阶段一：JavaSE
+	- Ⅱ、Java后端
+	- 1、阶段一：Java入门
 	- 02-Java语言概述
 tags: ["java历史"]
 ---

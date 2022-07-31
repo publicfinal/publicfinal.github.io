@@ -1,7 +1,7 @@
 ---
 title: Markdown文档创建与使用(Typora)
 categories: 
-	- 前言
+	- Ⅰ、前言：
 	- Markdown文档创建与使用(Typora)
 tags: ["Markdown","Typora"]
 
@@ -21,7 +21,7 @@ tags: ["Markdown","Typora"]
 
 <!-- more -->
 
-## 前言
+## Ⅰ、前言：
 
 ​		作为一个程序员，Markdown就像是情人一样。world文本虽美依旧敌不过情人的魅力。Markdown文档格式为.md文件。Markdown也是一种标记语言。该类型文件可使用普通编辑器打开或者编辑，例如：[记事本](https://notepad-plus-plus.org/)，[EditPlus](https://so.csdn.net/so/search?q=EditPlus&spm=1001.2101.3001.7020)，[sublime](http://www.sublimetext.com/)等等，当然了，也有更专业的编辑器，例如我现在正在使用的——Typora。
 

@@ -3,7 +3,7 @@
 
 title: Hexo个人博客搭建
 categories: 
-	- 前言
+	- Ⅰ、前言：
 	- Hexo个人博客搭建
 tags: ["Hexo","next主题","gitee部署","github部署"]
 ---
